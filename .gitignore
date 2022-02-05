@@ -1,0 +1,9 @@
+checkpoints/big-lama
+img/kakao-castle-clean/
+img/tigerbro_clean_v2/
+img/webui
+.idea/
+*.tar.gz
+*.zip
+*.pkl
+*.pyc
