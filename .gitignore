@@ -1,4 +1,4 @@
-checkpoints/ade20k
+checkpoints/*/*/*.ckpt
 img/kakao-castle-clean/
 img/tigerbro_clean_v2/
 img/webui
