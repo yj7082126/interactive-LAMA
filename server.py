@@ -187,10 +187,10 @@ if __name__ == "__main__":
     parser.add_argument('--name', default=None, help='experiment name')
     parser.add_argument('--imgdir', type=str, default="img/tigerbro_clean_v2")
     parser.add_argument('--model_loc', type=str, default="checkpoints/big-lama")
-    parser.add_argument("--device", type=str, default="cuda:0")
+    parser.add_argument("--device", type=str, default="cpu")
 
     parser.add_argument('--template_path', default="templates", help='Path to templates')
-    parser.add_argument('--address', default="0.0.0.0", help='Url')
+    parser.add_argument('--address', default="127.0.0.1", help='Url')
     parser.add_argument('--port', default=6006, help='Port to listen on.')
     parser.add_argument("--debug", action='store_true', default=False, help="Enable debugging mode.")
     args = parser.parse_args()
