@@ -1,7 +1,5 @@
 checkpoints/*/*/*.ckpt
-img/kakao-castle-clean/
-img/tigerbro_clean_v2/
-img/webui
+img/*/
 .idea/
 *.tar.gz
 *.zip

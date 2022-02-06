@@ -151,8 +151,7 @@ class MainApplication(web.Application):
         self.ioloop = ioloop.IOLoop.instance()
         self.logger = logging.getLogger()
 
-        curr_time = datetime.now().strftime('%y-%m-%d_%H:%M:%S:%f')[:-3]
-        self.sess_name = curr_time if args.name is None else args.name
+        self.sess_name = datetime.now().strftime('%y-%m-%d_%H:%M:%S:%f')[:-3]
         self.dir = Path("img/webui").joinpath(self.sess_name)
         self.dir.mkdir(parents=True, exist_ok=True)
 
@@ -184,15 +183,11 @@ class MainApplication(web.Application):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--name', default=None, help='experiment name')
+    parser.add_argument('--address', default="127.0.0.1", help='Url')
+    parser.add_argument('--port', default=6006, help='Port to listen on.')
     parser.add_argument('--imgdir', type=str, default="img/tigerbro_clean_v2")
     parser.add_argument('--model_loc', type=str, default="checkpoints/big-lama")
     parser.add_argument("--device", type=str, default="cpu")
-
-    parser.add_argument('--template_path', default="templates", help='Path to templates')
-    parser.add_argument('--address', default="127.0.0.1", help='Url')
-    parser.add_argument('--port', default=6006, help='Port to listen on.')
-    parser.add_argument("--debug", action='store_true', default=False, help="Enable debugging mode.")
     args = parser.parse_args()
 
     app = MainApplication(args)
