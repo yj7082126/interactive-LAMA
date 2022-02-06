@@ -17,7 +17,8 @@ cd checkpoints
 curl -L $(yadisk-direct https://disk.yandex.ru/d/ouP6l8VJ0HpMZg) -o big-lama.zip
 unzip big-lama.zip
 ```
-2. server.py 실행
+2. 인페인팅 시키고 싶은 이미지들을 img 폴더 안으로 이동
+3. server.py 실행
 ```
 python server.py \
 --address=127.0.0.1 # URL 주소 \ 
@@ -26,7 +27,23 @@ python server.py \
 --model_loc=checkpoints/big-lama #모델 checkpoint 폴더 주소. 
 --device=cuda:0 #사용하고 싶은 장치 이름
 ```
-3. 주소 [127.0.0.1/6006](https://127.0.0.1:6006)로 이동
+4. 주소 [127.0.0.1/6006](http://127.0.0.1:6006)로 이동
+
+시작화면 : 
+![before](img/before.png)
+* 왼쪽 사진에 마우스를 클릭한 채 움직이는 걸로 가리고 싶은 영역을 색칠할 수 있습니다.
+  * (색은 마젠타 색으로 고정시켜주세요)
+  * 마젠타 색 옆의 동그라미 아이콘을 선택하는 것으로 브러시 크기를 바꿀 수 있습니다.
+* 위의 파란색 화살표들을 클릭하는 것으로 사진을 선택할 수 있습니다.
+* 노란색 Inpainting 버튼을 클릭해서 이미지 인페인팅을 실행합니다.
+
+결과 :
+![after](img/after.png)
+img/webui/[실행 시점의 timestamp 폴더] 에서 인페인팅 결과를 확인할 수 있습니다.
+
+## ToDo List
+- [ ] 드래그 & 드롭 이미지 업로드 위젯 만들기
+- [ ] drawingboard 업데이트 
 
 ## Citations
 

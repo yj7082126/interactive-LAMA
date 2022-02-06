@@ -155,7 +155,9 @@ class MainApplication(web.Application):
         self.dir = Path("img/webui").joinpath(self.sess_name)
         self.dir.mkdir(parents=True, exist_ok=True)
 
-        self.imgs = sorted(list(Path(self.imgdir).glob("*.jpg")))
+        self.imgs = list(Path(self.imgdir).glob("*.jpg"))
+        self.imgs += list(Path(self.imgdir).glob("*.png"))
+        self.imgs = sorted(self.imgs)
         self.ind = 0
 
         self.model = self.load_model(args.model_loc)
@@ -185,9 +187,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--address', default="127.0.0.1", help='Url')
     parser.add_argument('--port', default=6006, help='Port to listen on.')
-    parser.add_argument('--imgdir', type=str, default="img/tigerbro_clean_v2")
+    parser.add_argument('--imgdir', type=str, default="img/inpainting_examples")
     parser.add_argument('--model_loc', type=str, default="checkpoints/big-lama")
     parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument('--template_path', default="templates", help='Path to templates')
     args = parser.parse_args()
 
     app = MainApplication(args)
